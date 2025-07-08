@@ -1,2 +1,2 @@
 # knowledge_hub
-学习笔记共享试点
+share some learning notes
