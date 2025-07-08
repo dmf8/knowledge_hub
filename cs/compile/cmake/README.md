@@ -12,6 +12,7 @@
 |basic rules|cmake的基本原理和规则|
 |[commands](commands)|常用命令要点说明|
 |scenarios|常用使用场景|
+|variables|常见变量说明|
 
 # 学习资料
 cmake官方文档 https://cmake.org/cmake/help/latest/index.html

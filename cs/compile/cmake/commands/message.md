@@ -8,6 +8,7 @@
     message([<mode>] "message text" ...)
     ```
     mode可选，具体有哪些mode参见官方文档 https://cmake.org/cmake/help/latest/command/message.html#command:message
+    
 1. 查看变量
     ```
     message(${VARIABLE})
