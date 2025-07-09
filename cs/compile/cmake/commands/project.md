@@ -38,3 +38,6 @@ message(${hello_cmake_SOURCE_DIR})
 message(${PROJECT_BINARY_DIR})
 message(${hello_cmake_BINARY_DIR})
 ```
+
+# 使用建议
+一般自建项目，建议只在顶层使用project命令。如果项目中包含了第三方库，第三方库本身可能也含有project，这种情况下才会在一个工程中看到多个project命令。
