@@ -1,8 +1,8 @@
-#include "test_class.h"
+#include "test_class1.h"
 
 int main(int argc, char const *argv[])
 {
-    TestClass tc;
-    tc.func();
+    TestClass1 tc1;
+    tc1.func();
     return 0;
 }
