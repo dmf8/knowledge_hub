@@ -7,11 +7,21 @@
 1. 将所有源文件添加到目标
     这一步又可以分为不同的实现方式
     - 在顶层CMakeLists.txt中写出所有的源文件引用路径
-    - 使用cmake片断文件，在每一层中将所包含的源文件添加到片断文件，然后引用片断文件
+    - 使用cmake片段文件，在每一层中将所包含的源文件添加到片段文件，然后引用片段文件
+        具体操作为
+        1. 在顶层的CMakeLists.txt中，创建两个变量，用于存放头文件引用目录列表和源文件列表
+        1. 每个子目录中创建一个.cmake文件，用于向变量写入自身包含的源文件和头文件目录
+            - 文件和目录的引用需要使用当前片段文件作为引用起点。如果只给出相对于子目录的路径，对调用者而言会找不到该路径
+            - 可以通过遍历函数来找到所有源文件，这样可以让片段文件更加通用
+            ```
+            foreach(file ${UTILS_FILES})
+                list(APPEND GLOBAL_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/${file}")
+            endforeach()
+            ```
 
 # 等效g++命令
 以build文件夹为起点，生成可执行目标文件test
 ```
-g++ -I ../include/ -I ../sub1/include/ -o test ../main.cpp ../sub1/test_class1.cpp ../sub1/sub2/test_class2.cpp
+g++ -I ../sub1/include/ -I ../sub1/sub2/include/ -o test ../main.cpp ../sub1/src/test_class1.cpp ../sub1/sub2/src/test_class2.cpp
 ```
 
