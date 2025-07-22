@@ -61,84 +61,82 @@ public:
     virtual ~MemoryStream() {}
 };
 
+// decorator
+class DecoratorStream : public Stream // keep same interface with stream
+{
+protected:
+    Stream *stream; // file type polymorphic
+
+public:
+    DecoratorStream(Stream *stream)
+        : stream(stream)
+    {
+    }
+    virtual ~DecoratorStream() {}
+};
+
 // crypto
-// same crypto logic for read
-// same crypto logic for write
-// same crypto logic for locate
-class CryptoFileStream : public FileStream
+class CryptoStream : public DecoratorStream
 {
 public:
+    CryptoStream(Stream *stream)
+        : DecoratorStream(stream)
+    {
+    }
+    virtual ~CryptoStream() {}
+
     virtual char Read(int number) override
     {
-        // chrypo1
-        cout << __PRETTY_FUNCTION__ << endl;
-        char ret = FileStream::Read(number);
-        // chrypo2
+        cout << "crypto read" << endl;
+        char ret = stream->Read(number);
         return ret;
     }
     virtual void Seek(int position) override
     {
-        // chrypo1
-        FileStream::Seek(position);
-        // chrypo2
+        stream->Seek(position);
     }
     virtual void Write(char data) override
     {
-        // chrypo1
-        FileStream::Write(data);
-        // chrypo2
+        stream->Write(data);
     }
-    virtual ~CryptoFileStream() {}
-};
-
-class CryptoNetworkStream : public NetworkStream
-{
-};
-class CryptoMemoryStream : public MemoryStream
-{
 };
 
 // buffer
-class BufferedFileStream : public FileStream
+class BufferedStream : public DecoratorStream
 {
-    virtual char Read(int position) override
+public:
+    BufferedStream(Stream *stream)
+        : DecoratorStream(stream)
     {
-        cout << __PRETTY_FUNCTION__ << endl;
-        char ret = FileStream::Read(position);
-        return ret;
     }
-};
-class BufferedNetworkStream : public NetworkStream
-{
-};
-class BufferedMemoryStream : public MemoryStream
-{
-};
+    virtual ~BufferedStream() {}
 
-// buffer+crypto
-class CryptoBufferedFileStream : public FileStream
-{
-    virtual char Read(int position) override
+    virtual char Read(int number) override
     {
-        cout << __PRETTY_FUNCTION__ << endl;
-        char ret = FileStream::Read(position);
+        cout << "buffered read" << endl;
+        char ret = stream->Read(number);
         return ret;
     }
-};
-class CryptoBufferedNetworkStream : public NetworkStream
-{
-};
-class CryptoBufferedMemoryStream : public MemoryStream
-{
+    virtual void Seek(int position) override
+    {
+        stream->Seek(position);
+    }
+    virtual void Write(char data) override
+    {
+        stream->Write(data);
+    }
 };
 
 void process()
 {
-    CryptoFileStream *fs1 = new CryptoFileStream;
-    BufferedFileStream *fs2 = new BufferedFileStream;
-    CryptoBufferedFileStream *fs3 = new CryptoBufferedFileStream;
+    FileStream *fs = new FileStream;
+    CryptoStream *cs = new CryptoStream(fs);
+    BufferedStream *bs = new BufferedStream(fs);
+    BufferedStream *bs2 = new BufferedStream(cs);
 
-    fs1->Read(0);
+    cs->Read(0);
+    bs->Read(0);
+    bs2->Read(0);
 }
 
 int main()
