@@ -27,6 +27,8 @@
     class MainForm: public Form, public IProgress
     ```
 
+[代码](observer_event.cpp)
+
 ### 方法小结
 MainForm在此次的案例中, 作为具体的观察者, 在状态变化时被通知. 
 

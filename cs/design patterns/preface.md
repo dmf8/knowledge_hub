@@ -59,12 +59,12 @@
 
 ## 本课程分类 (章节目录)
 - [组件协作](<component collaboration/>)
-    - 01-Template Method
+    - [01-Template Method](<component collaboration/01-Template_Method/>)
     - [02-Strategy](<component collaboration/02-Strategy/>)
-    - 03-Observer/Event
+    - [03-Observer/Event](<component collaboration/03-Observer_Event/>)
 - 单一职责
-    - Decorator
-    - Bridge
+    - [04-Decorator](<single responsibility/04-Decorator/>)
+    - [05-Bridge](<single responsibility/05-Bridge/>)
 - 对象创建
     - Factory Method
     - Abstract Factory
