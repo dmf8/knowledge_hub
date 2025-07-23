@@ -66,19 +66,22 @@
     - [04-Decorator](<single responsibility/04-Decorator/>)
     - [05-Bridge](<single responsibility/05-Bridge/>)
 - 对象创建
+
     对象创建模式绕开new, 避免对象创建过程中导致的紧耦合(依赖具体类), 从而支持对象创建的稳定. 这是接口抽象之后的第一步工作. 
+
     - [06-Factory Method](<object creation/06-Factory Method/>)
     - [07-Abstract Factory](<object creation/07-Abstract Factory/>)
     - [08-*Prototype](<object creation/08-Prototype/>)
     - [09-*Builder](<object creation/09-Builder/>)
+
 - 对象性能
-    - Singleton
-    - Flyweight
+    - [10-Singleton](<object performance/10-Singleton/>)
+    - [11-Flyweight](<object performance/11-Flyweight/>)
 - 接口隔离
     - Facade
     - Proxy
-    - Mediator
     - Adapter
+    - Mediator
 - 状态变化
     - Memento
     - State
