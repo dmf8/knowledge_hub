@@ -78,10 +78,10 @@
     - [10-Singleton](<object performance/10-Singleton/>)
     - [11-Flyweight](<object performance/11-Flyweight/>)
 - 接口隔离
-    - Facade
-    - Proxy
-    - Adapter
-    - Mediator
+    - [12-Facade](<interface isolation/12-Facade/>)
+    - [13-Proxy](<interface isolation/13-Proxy/>)
+    - [14-Adapter](<interface isolation/14-Adapter/>)
+    - [15-*Mediator](<interface isolation/15-Mediator/>)
 - 状态变化
     - Memento
     - State
