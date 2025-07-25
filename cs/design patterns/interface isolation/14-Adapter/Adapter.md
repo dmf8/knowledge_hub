@@ -28,6 +28,25 @@ class Adapter : public ITarget, protected OldClass
 };
 ```
 
+## 类图
+```mermaid
+classDiagram
+class Client
+class Target {
+    + Request()
+}
+class Adapter {
+    + Request()
+}
+class Adaptee {
+    + SpecificRequest()
+}
+
+Client --> Target
+Target <|-- Adapter
+Adapter o--> Adaptee
+```
+
 # 要点总结
 - 适配器模式主要用于"希望复用一些现存的类, 但是接口又与复用环境要求不一致的情况", 在遗留代码复用、类库迁移等方面非常有用
 - GoF23定义了对象适配器和类适配器, 对象适配器就是上面[例子](#实现方式)中将老接口组合在新接口内部的方式. 类适配器采用多继承, 一般不推荐使用

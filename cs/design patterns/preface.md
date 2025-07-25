@@ -83,8 +83,8 @@
     - [14-Adapter](<interface isolation/14-Adapter/>)
     - [15-*Mediator](<interface isolation/15-Mediator/>)
 - 状态变化
-    - Memento
     - State
+    - Memento
 - 数据结构
     - Composite
     - Iterator
