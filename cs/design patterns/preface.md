@@ -83,12 +83,12 @@
     - [14-Adapter](<interface isolation/14-Adapter/>)
     - [15-*Mediator](<interface isolation/15-Mediator/>)
 - 状态变化
-    - State
-    - Memento
+    - [16-State](<status variation/16-State/>)
+    - [17-Memento](<status variation/17-Memento/>)
 - 数据结构
-    - Composite
-    - Iterator
-    - Chain of Responsibility
+    - [18-Composite](<data structure/18-Composite/>)
+    - [19-Iterator](<data structure/19-Iterator/>)
+    - [20-Chain of Responsibility](<data structure/20-Chain of Responsibility/>)
 - 行为变化
     - Command
     - Visitor
