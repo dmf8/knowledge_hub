@@ -1,5 +1,5 @@
 # 新增运算符一览
-和C语言相比, 新增了下列运算符
+和C语言相比, 新增了一些运算符. 主要的列举如下
 - ::
 - .*, ->*
 - new, delete
@@ -9,8 +9,6 @@
 - static_cast<>()
 - reinterpret_cast<>()
 - const_cast<>()
-- throw
-- catch
 
 # ::
 用法如下:
