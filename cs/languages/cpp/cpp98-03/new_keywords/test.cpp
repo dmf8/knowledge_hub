@@ -45,13 +45,17 @@ using lcn = LongClassName;
 
 int main()
 {
-    func();
-    using np1::func;
-    np11::func();
-    func();
-    ::func();
+    // namespace
+    cout << "--namespace--" << endl;
+    func();          //::func
+    using np1::func; //
+    np11::func();    // np1::func
+    func();          // np1::func
+    ::func();        //::func
     np1::func2();
 
+    // using
+    cout << "--using--" << endl;
     lcn();
 
     return 0;
