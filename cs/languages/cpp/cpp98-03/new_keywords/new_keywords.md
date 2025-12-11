@@ -45,7 +45,7 @@ namespace test_namespace
 
 ## using
 作用: 
-1. 指定范围限定名的别名
+1. <a id="using推荐用法"></a>指定范围限定名的别名
 
     ```cpp
     using std::cout;
@@ -65,6 +65,17 @@ namespace test_namespace
     ```cpp
     using <new_name> = <old_class_name>;
     ```
+
+作用范围
+using声明无法取消, 但有自身的作用范围
+1. cpp文件
+1. 函数内部
+1. 语句块{}内部
+
+使用建议
+1. 不要在头文件使用
+1. 尽量避免在cpp全局使用(类似Python一般不建议使用from module import *的写法)
+1. [推荐用法](#using推荐用法)
 
 ## volatile
 常和const相提并论
