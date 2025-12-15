@@ -1,0 +1,5 @@
+class Encapsulation
+{
+public:
+    Encapsulation();
+};
