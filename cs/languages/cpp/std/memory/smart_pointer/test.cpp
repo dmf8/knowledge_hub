@@ -15,13 +15,19 @@ struct TestStruct
 void test_shared()
 {
     shared_ptr<TestStruct> p = make_shared<TestStruct>();
-    cout << "count1: " << p.use_count() << endl;
+    cout << "count1: " << p.use_count() << endl; // 1
     p->func();
     {
         shared_ptr<TestStruct> p2 = p;
-        cout << "count2: " << p.use_count() << endl;
+        cout << "count2: " << p.use_count() << endl; // 2
+        p.reset(new TestStruct);
+        cout << "count5: " << p.use_count() << endl; // 1
     }
-    cout << "count3: " << p.use_count() << endl;
+    cout << "count3: " << p.use_count() << endl; // 1
+
+    p.reset();
+    cout << "count4: " << p.use_count() << endl; // 0
+
     cout << "bool " << p << " " << p.operator bool() << endl;
 }
 
