@@ -12,6 +12,21 @@ struct TestStruct
     }
 };
 
+void test_unique()
+{
+    unique_ptr<TestStruct> p;
+    cout << "empty init " << p.operator bool() << endl; // 0
+    p = make_unique<TestStruct>();
+    cout << "assigned " << p.operator bool() << endl; // 1
+    TestStruct *p_raw = p.release();
+    p_raw->i = 100;
+    cout << "modifid " << p_raw->i << endl;           // 100
+    cout << "released " << p.operator bool() << endl; // 0
+    p.reset(p_raw);
+    cout << "reset " << p.operator bool() << endl; // 1
+    cout << "int " << p->i << endl;                // 100
+}
+
 void test_shared()
 {
     shared_ptr<TestStruct> p = make_shared<TestStruct>();
@@ -33,7 +48,9 @@ void test_shared()
 
 int main()
 {
+    // unique_ptr
+    test_unique();
     // shared_ptr
-    test_shared();
+    // test_shared();
     return 0;
 }
