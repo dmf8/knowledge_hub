@@ -1,5 +1,13 @@
 #include <iostream>
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 #include "encapsulation.h"
+#include "extern_c.h"
+#ifdef __cplusplus
+}
+#endif
 using namespace std;
 
 namespace overload
@@ -31,6 +39,9 @@ int main()
     e.func();
     const Encapsulation *pe = &e;
     pe->func();
+
+    // extern C
+    func();
 
     return 0;
 }
