@@ -35,3 +35,8 @@ void Encapsulation::func()
 {
     defaultParams(1);
 }
+
+void Encapsulation::func() const
+{
+    cout << __FUNCTION__ << " const" << endl;
+}

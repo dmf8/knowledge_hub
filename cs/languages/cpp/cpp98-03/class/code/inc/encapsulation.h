@@ -7,7 +7,9 @@ public:
     void defaultParams2(int p = i);
     void formalParams(int, double);
     void formalParams2(int, double d);
+
     void func();
+    void func() const;
 
 private:
     static int i;
