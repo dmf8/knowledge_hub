@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+#include "space.h"
+#include "static.h"
 #include "animal.h"
 #include "explicit.h"
 #include "person.h"
@@ -119,6 +121,26 @@ void test_new()
         cout << *vec[i] << endl;
 }
 
+void test_static()
+{
+    cout << TestStatic::i1 << endl;
+    // Person p1;
+    TestStatic::func1();
+    TestStatic::func2();
+}
+
+void test_space()
+{
+    Space s;
+    cout << "empty class: " << sizeof(s) << endl;
+}
+
+void test_this()
+{
+    Space *s = nullptr;
+    s->func();
+}
+
 int main()
 {
     // parameters
@@ -140,7 +162,16 @@ int main()
     // test_explicit();
 
     // new/delete
-    test_new();
+    // test_new();
+
+    // static
+    // test_static();
+
+    // space
+    // test_space();
+
+    // this
+    test_this();
 
     return 0;
 }

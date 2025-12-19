@@ -1,4 +1,5 @@
 #include <iostream>
+#include "static.h"
 using namespace std;
 
 #include "person.h"
@@ -13,6 +14,7 @@ Person::Person()
     : age(20)
 {
     cout << "Person default cntr" << endl;
+    // cout << TestStatic::d1 << endl;
 }
 
 Person::Person(const Person &p)

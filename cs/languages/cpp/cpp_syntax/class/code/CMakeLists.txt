@@ -7,6 +7,8 @@ add_executable(${PROJECT_NAME}
     src/person.cpp
     src/animal.cpp
     src/explicit.cpp
+    src/static.cpp
+    src/space.cpp
     )
 
 target_include_directories(
