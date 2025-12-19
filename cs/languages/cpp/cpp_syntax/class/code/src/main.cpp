@@ -1,4 +1,5 @@
 #include <iostream>
+#include "animal.h"
 #include "person.h"
 #ifdef __cplusplus
 extern "C"
@@ -23,28 +24,29 @@ namespace overload
     }
 }
 
-int main()
+void test_parameters()
 {
-    // parameters
     Encapsulation e;
     // e.defaultParams(1); // error
     e.func();
     e.defaultParams2();
     e.formalParams(1, 1.5);
     e.formalParams2(2, 3.5);
+}
 
-    // overload
+void test_overload()
+{
     overload::func();
     overload::func(1);
 
+    Encapsulation e;
     e.func();
     const Encapsulation *pe = &e;
     pe->func();
+}
 
-    // extern C
-    func();
-
-    // class
+void test_class()
+{
     Person p1(18);
     Person p2 = Person();
     Person p3;
@@ -69,6 +71,30 @@ int main()
     pp3->func();
     pp4->func();
     pp4->func2(*pp1);
+}
+
+void test_class_default()
+{
+    Animal a;
+    a.showName();
+}
+
+int main()
+{
+    // parameters
+    // test_parameters();
+
+    // overload
+    // test_overload();
+
+    // extern C
+    // func();
+
+    // class
+    // test_class();
+
+    // default functions
+    test_class_default();
 
     return 0;
 }
