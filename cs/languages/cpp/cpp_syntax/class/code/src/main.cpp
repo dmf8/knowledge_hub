@@ -1,5 +1,8 @@
 #include <iostream>
+#include <vector>
+#include <memory>
 #include "animal.h"
+#include "explicit.h"
 #include "person.h"
 #ifdef __cplusplus
 extern "C"
@@ -76,7 +79,44 @@ void test_class()
 void test_class_default()
 {
     Animal a;
+    // Animal cat("cat");
     a.showName();
+    // cat.showName();
+}
+
+void test_explicit()
+{
+    TestExplicit te = 2;
+}
+
+void test_new()
+{
+    Person p1{18};
+    Person *p2 = new Person{p1};
+    p2->func();
+    int *p3 = new int{3};
+    cout << *p3 << endl;
+
+    int *p_arr = new int[5]{1, 2, 3, 4};
+    // for (int i = 0; i < 5; ++i)
+    //     p_arr[i] = i;
+    for (int i = 0; i < 5; ++i)
+        cout << p_arr[i] << endl;
+
+    delete p2;
+    delete p3;
+    delete[] p_arr;
+
+    unique_ptr<int> up1{new int{30}};
+    cout << *up1 << endl;
+    vector<unique_ptr<int>> vec;
+    vec.push_back(make_unique<int>(60));
+    // vec = {
+    //     make_unique<int>(60),
+    //     make_unique<int>(90),
+    // };
+    for (int i = 0; i < vec.size(); ++i)
+        cout << *vec[i] << endl;
 }
 
 int main()
@@ -94,7 +134,13 @@ int main()
     // test_class();
 
     // default functions
-    test_class_default();
+    // test_class_default();
+
+    // explicit
+    // test_explicit();
+
+    // new/delete
+    test_new();
 
     return 0;
 }
