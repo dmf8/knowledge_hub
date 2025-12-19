@@ -59,3 +59,17 @@ C语言不支持函数重载. 但因为C++支持函数重载, 因此编译器会
     extern "C" void func();
     #include "extern_c.h" //包含 void func();
     ```
+
+# 封装
+## 访问控制权限
+- public
+- protected
+- private
+
+    私有成员是类内访问, 而非对象内访问. 如果某个函数参数是另一个同类对象的引用, 在该函数内也可以访问该对象的私有成员.
+
+## struct/class区别
+1. struct成员默认public, class成员默认private
+1. struct继承默认public, class继承默认private
+
+建议把访问权限都写完整, 不要默认使用, 便于阅读
