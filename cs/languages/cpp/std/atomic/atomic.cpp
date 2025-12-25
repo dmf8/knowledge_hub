@@ -12,23 +12,55 @@ void exchange(atomic<T> &a, T val)
 
 atomic<bool> a{false};
 int count = 0;
+int count2 = 0;
 
 void lock()
 {
-    while (::a.exchange(true))
+    if (::a.exchange(true, memory_order_relaxed))
     {
-        cout << "locked 2" << endl;
-        continue;
+        ::count2++;
+        return;
     }
 
     ::count++;
-    ::a.exchange(false);
+    ::a.exchange(false, memory_order_relaxed);
 }
 
 void work(int n)
 {
     for (int i = 0; i < n; ++i)
         lock();
+}
+
+atomic<bool> ready{false};
+atomic<int> data{0};
+
+void producer()
+{
+    ::data.store(42, memory_order_relaxed);
+    ::ready.store(true, memory_order_relaxed);
+}
+
+void consumer()
+{
+    while (!ready.load(memory_order_relaxed))
+        this_thread::yield();
+
+    cout << "data: " << data.load(memory_order_relaxed) << endl;
+}
+
+atomic_flag f = ATOMIC_FLAG_INIT;
+int count_flag = 0;
+void spin_test(int n)
+{
+    for (int i = 0; i < n; ++i)
+    {
+        while (::f.test_and_set(memory_order_relaxed))
+        {
+        }
+        ::count_flag++;
+        ::f.clear(memory_order_relaxed);
+    }
 }
 
 int main()
@@ -54,6 +86,28 @@ int main()
     th1.join();
     th2.join();
     cout << "count: " << ::count << endl;
+    cout << "count2: " << ::count2 << endl;
+    cout << "total count: " << ::count + ::count2 << endl;
+
+    // memory order
+    thread th3(producer);
+    thread th4(consumer);
+
+    th3.join();
+    th4.join();
+
+    // atomic_flag
+    atomic_flag f1;
+    atomic_flag f2 = ATOMIC_FLAG_INIT;
+
+    cout << f1.test_and_set() << endl;
+    cout << f2.test_and_set() << endl;
+
+    thread th5(spin_test, count);
+    thread th6(spin_test, count);
+    th5.join();
+    th6.join();
+    cout << "flag test: " << ::count_flag << endl;
 
     return 0;
 }
