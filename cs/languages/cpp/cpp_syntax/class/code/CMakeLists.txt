@@ -9,6 +9,7 @@ add_executable(${PROJECT_NAME}
     src/explicit.cpp
     src/static.cpp
     src/space.cpp
+    src/const_obj.cpp
     )
 
 target_include_directories(

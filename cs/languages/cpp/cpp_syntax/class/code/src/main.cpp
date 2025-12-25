@@ -2,6 +2,7 @@
 #include <vector>
 #include <memory>
 #include "space.h"
+#include "const_obj.h"
 #include "static.h"
 #include "animal.h"
 #include "explicit.h"
@@ -141,6 +142,17 @@ void test_this()
     s->func();
 }
 
+void test_const()
+{
+    ConstObj co;
+    co.funcConst();
+    co.func();
+
+    const ConstObj co2;
+    co2.funcConst();
+    // co2.func();
+}
+
 int main()
 {
     // parameters
@@ -171,7 +183,10 @@ int main()
     // test_space();
 
     // this
-    test_this();
+    // test_this();
+
+    // const/mutable
+    test_const();
 
     return 0;
 }
