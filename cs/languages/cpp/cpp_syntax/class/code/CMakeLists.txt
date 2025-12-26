@@ -10,6 +10,7 @@ add_executable(${PROJECT_NAME}
     src/static.cpp
     src/space.cpp
     src/const_obj.cpp
+    src/operator.cpp
     )
 
 target_include_directories(

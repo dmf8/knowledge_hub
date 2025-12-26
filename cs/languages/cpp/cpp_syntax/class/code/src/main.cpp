@@ -2,6 +2,7 @@
 #include <vector>
 #include <memory>
 #include "space.h"
+#include "operator.h"
 #include "const_obj.h"
 #include "static.h"
 #include "animal.h"
@@ -176,6 +177,23 @@ void test_friend()
     friend_test::seeFriend(&c);
 }
 
+void test_operator()
+{
+    //+
+    Operator o{2};
+    Operator o1 = o + 3;
+    Operator o2 = o + o1;
+    Operator o3 = 4 + o;
+    o1.show();
+    o2.show();
+    o3.show();
+
+    //++
+    cout << o.getValue() << endl;
+    cout << o++.getValue() << endl;
+    cout << (++o).getValue() << endl;
+}
+
 int main()
 {
     // parameters
@@ -212,7 +230,10 @@ int main()
     // test_const();
 
     // friend
-    test_friend();
+    // test_friend();
+
+    // operator
+    test_operator();
 
     return 0;
 }
