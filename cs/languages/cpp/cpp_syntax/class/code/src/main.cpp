@@ -120,6 +120,10 @@ void test_new()
     // };
     for (int i = 0; i < vec.size(); ++i)
         cout << *vec[i] << endl;
+
+    cout << "--anonymous constructor" << endl;
+    Person p4 = Person{100};
+    cout << "--anonymous constructor end" << endl;
 }
 
 void test_static()
@@ -151,6 +155,25 @@ void test_const()
     const ConstObj co2;
     co2.funcConst();
     // co2.func();
+}
+
+namespace friend_test
+{
+    void seeFriend(Animal *a)
+    {
+        cout << "see friend " << a->name << endl;
+    }
+}
+
+void test_friend()
+{
+    // Animal a{"wangcai"};
+    Cat c;
+    Person p;
+    p.setPet(&c);
+    p.showPetName();
+    p.showPetType();
+    friend_test::seeFriend(&c);
 }
 
 int main()
@@ -186,7 +209,10 @@ int main()
     // test_this();
 
     // const/mutable
-    test_const();
+    // test_const();
+
+    // friend
+    test_friend();
 
     return 0;
 }

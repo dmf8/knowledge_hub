@@ -1,4 +1,5 @@
 #include <iostream>
+#include "animal.h"
 #include "static.h"
 using namespace std;
 
@@ -23,9 +24,29 @@ Person::Person(const Person &p)
     cout << "Person copy cntr " << age << endl;
 }
 
+Person::~Person()
+{
+    cout << "Person destructor" << endl;
+}
+
 void Person::func2(const Person &p) const
 {
     cout << "other age: " << p.age << endl;
+}
+
+void Person::setPet(Animal *a)
+{
+    this->pet = a;
+}
+
+void Person::showPetName() const
+{
+    cout << "pet name: " << this->pet->name << endl;
+}
+
+void Person::showPetType() const
+{
+    cout << "pet type: " << this->pet->type << endl;
 }
 
 void Person::func() const

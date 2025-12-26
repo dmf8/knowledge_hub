@@ -39,3 +39,8 @@ Claw::Claw(int toes, int count)
 {
     cout << "Claw args cntr" << endl;
 }
+
+Cat::Cat()
+    : Animal("cat")
+{
+}

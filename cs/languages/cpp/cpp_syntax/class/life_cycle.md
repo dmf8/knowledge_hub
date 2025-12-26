@@ -27,10 +27,15 @@
     ```cpp
     Person();
     Person(18);
-    Person p = Person();
-    Person p2 = Person(19);
     //Person(p); //这不是匿名对象, 等效于Person p;
     Person{p}; //拷贝构造匿名对象
+    ```
+
+    下面这些不是匿名对象, 而是直接调用了构造函数
+
+    ```cpp
+    Person p = Person(); //等效于Person p{};
+    Person p2 = Person(19); //等效于Person p2{19};
     ```
 
 - 拷贝构造函数
