@@ -48,6 +48,11 @@
     void reset (pointer p = pointer()) noexcept;
     ```
 
+1. 获取指针 get
+    ```cpp
+    pointer get() const noexcept;
+    ```
+
 # shared_ptr
 共享所有权的智能指针, 和unique_ptr的区别是, 对资源做引用计数, 当引用计数为0时, 自动释放资源
 
@@ -69,6 +74,11 @@
     template <class U> void reset (U* p); //U*应当可以隐式转换为T*
     template <class U, class D> void reset (U* p, D del);
     template <class U, class D, class Alloc> void reset (U* p, D del, Alloc alloc);
+    ```
+
+1. 获取指针 get
+    ```cpp
+    element_type* get() const noexcept;
     ```
 
 # weak_ptr
