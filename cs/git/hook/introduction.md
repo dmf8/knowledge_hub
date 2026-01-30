@@ -28,6 +28,8 @@ git的很多事件前后也可以称为hook
 
 ## .githooks/ (原生方式)
 1. 在git根目录下创建.githooks目录, 需要将该目录上传到git
+
+    这个目录可以任意, 只需要能够提交git即可, 后面会通过config进行目录选择
 1. 把hooks脚本放进该目录, 会覆盖.git/hooks中的同名配置
 1. 配置git
 
