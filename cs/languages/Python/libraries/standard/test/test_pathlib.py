@@ -1,14 +1,25 @@
 from pathlib import Path
+from pathlib import PureWindowsPath
+import sys
 
 # 1. special paths
 pHome = Path.home()
 pCwd = Path.cwd()
 
 # 2. create path
-p1 = Path(".")/"empty.txt"
-p2 = Path.cwd()/"test_pathlib.py"
-p3 = Path(".")/"test_pathlib.py"
-p4 = Path.cwd()
+pDirRoot = Path("/")
+pDirCur = Path.cwd()
+pDirDot = Path(".")
+pDirDotDot = Path("..")
+pDirNotExist = Path("test")
+pDirNotExist1 = Path("test/")
+
+pLnkNotExist = Path(".")/"test_files/lxyz"
+pLnkExist = Path(".")/"test_files/labc"
+pFileNotExist = Path(".")/"test_files/null"
+pDriver1 = Path("/")
+pDriver2 = PureWindowsPath("C:")
+pDriverFile = PureWindowsPath("C:/abc")
 
 # 3. abs
 # print("abs:")
@@ -17,15 +28,16 @@ p4 = Path.cwd()
 # print(p3.resolve())
 
 # 4. assertions
-print("exist:")
-print(p1.exists())
-print(p2.exists())
-print(p4.exists())
+# print(f"pDirRoot: {pDirRoot.is_file()}")
+# print(f"pDirCur: {pDirCur.is_file()}")
+# print(f"pDirDot: {pDirDot.is_file()}")
+# print(f"pDirDotDot: {pDirDotDot.is_file()}")
+# print(f"pDirNotExist: {pDirNotExist.is_file()}")
+# print(f"pDirNotExist1: {pDirNotExist1.is_file()}")
 
-# 5. parts
-print(p1.parts)
-print(p2.parts)
-print(p4.parts)
+print(pDriver1.is_absolute())
+print(pDriver2.is_absolute())
+print(pDriverFile.is_absolute())
 
 # print("abs:")
 # print(pHome.resolve())
