@@ -17,9 +17,10 @@ pDirNotExist1 = Path("test/")
 pLnkNotExist = Path(".")/"test_files/lxyz"
 pLnkExist = Path(".")/"test_files/labc"
 pFileNotExist = Path(".")/"test_files/null"
+pFileNoPermission = Path(".")/"test_files/000"
 pDriver1 = Path("/")
-pDriver2 = PureWindowsPath("C:")
-pDriverFile = PureWindowsPath("C:/abc")
+pDriver2 = Path("C:")
+pDriverFile = Path("C:/abc")
 
 # 3. abs
 # print("abs:")
@@ -35,9 +36,22 @@ pDriverFile = PureWindowsPath("C:/abc")
 # print(f"pDirNotExist: {pDirNotExist.is_file()}")
 # print(f"pDirNotExist1: {pDirNotExist1.is_file()}")
 
-print(pDriver1.is_absolute())
-print(pDriver2.is_absolute())
-print(pDriverFile.is_absolute())
+
+try:
+    print(pDriver1.stat())
+    print(pDriver2.stat())
+# except FileNotFoundError:
+#     print("FileNotFoundError")
+except Exception as e:
+    print(str(e))
+    print(type(e).__name__)
+    print(e.args)
+else:
+    print("no except")
+finally:
+    print("final")
+# print(pDriverFile.stat())
+# print("stat error")
 
 # print("abs:")
 # print(pHome.resolve())
